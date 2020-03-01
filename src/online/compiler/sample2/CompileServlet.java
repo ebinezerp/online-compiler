@@ -25,12 +25,16 @@ public class CompileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String sourceCode = request.getParameter("sourcecode");
+		if (sourceCode.contains("System.in")) {
+			String inputFileName = "input.txt";
+			sourceCode = sourceCode.replaceAll("\"System.in\"", "new File(\"" + inputFileName + "\")");
+		}
 
 		JavaFile javaFile = new JavaFile(sourceCode, filePath);
 		String message = javaFile.compile();
 		if (message.length() <= 0) {
 			request.setAttribute("compilestatus", true);
-			request.setAttribute("javaFile", javaFile);
+			request.getSession().setAttribute("javaFile", javaFile);
 			message = "Successfully Compiled";
 		} else {
 			request.setAttribute("compilestatus", false);

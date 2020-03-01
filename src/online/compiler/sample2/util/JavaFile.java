@@ -20,6 +20,10 @@ public class JavaFile {
 		this.filename = getFileName();
 	}
 
+	public String getPath() {
+		return filePath;
+	}
+
 	public String getFileName() {
 		return new SourceCodeParse(sourceCode).getClassName();
 	}
@@ -63,7 +67,7 @@ public class JavaFile {
 
 		br = new BufferedReader(new InputStreamReader(proccess.getErrorStream()));
 		while ((line = br.readLine()) != null) {
-			message.append("line");
+			message.append(line);
 			message.append("\n");
 		}
 		return message.toString();

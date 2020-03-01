@@ -52,6 +52,9 @@
 				<div>
 					<textarea name="sourcecode" rows="20" cols="70">${param.sourcecode}</textarea>
 				</div>
+				<div>
+					<textarea name="input" rows="5" cols="20"></textarea>
+				</div>
 				<input type="button" value="Compile" onclick="compile()"> <input
 					type="button" value="Run" onclick="run()">
 			</form>
