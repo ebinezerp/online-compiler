@@ -7,4 +7,8 @@
 	<param-value>E:/tech-m/online-compiler/</param-value>
 </context-param>
 
+<welcome-file-list>
+	<welcome-file>login.jsp</welcome-file>
+</welcome-file-list>
+
 </web-app>

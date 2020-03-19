@@ -6,6 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 
+<%@include file="bootstrap.jsp"%>
 
 <script type="text/javascript">
 	function compile() {
@@ -16,14 +17,12 @@
 		sourcecodeForm.submit();
 
 	}
-	
-	
-	function run(){
+
+	function run() {
 		let sourcecodeForm = document.forms['sourcecodeForm'];
-		sourcecodeForm.setAttribute('action','run');
+		sourcecodeForm.setAttribute('action', 'run');
 		sourcecodeForm.submit();
 	}
-	
 </script>
 
 <style>
@@ -37,7 +36,11 @@
 
 #container>#compile-run-section {
 	flex: 1;
+}
+
+#container>#compile-run-section>#message-box {
 	border: 1px solid black;
+	height: 200px;
 }
 </style>
 
@@ -45,14 +48,16 @@
 <body>
 	<section id="container">
 		<section id='sourcecodeForm-section'>
+			<p>Enter your source code here</p>
 			<form name="sourcecodeForm" method="post">
 				<div>
-					<input type="hidden" name="compilestatus"  value="${compilestatus}"/>
+					<input type="hidden" name="compilestatus" value="${compilestatus}" />
 				</div>
 				<div>
-					<textarea name="sourcecode" rows="20" cols="70">${param.sourcecode}</textarea>
+					<textarea name="sourcecode" rows="20" cols="80">${param.sourcecode}</textarea>
 				</div>
 				<div>
+					<p>Input</p>
 					<textarea name="input" rows="5" cols="20"></textarea>
 				</div>
 				<input type="button" value="Compile" onclick="compile()"> <input
@@ -61,7 +66,8 @@
 		</section>
 
 		<section id="compile-run-section">
-			  ${message}
+			<p>Output Console</p>
+			<div id="message-box">${message}</div>
 		</section>
 	</section>
 </body>

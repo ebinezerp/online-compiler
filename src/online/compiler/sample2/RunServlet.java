@@ -27,6 +27,7 @@ public class RunServlet extends HttpServlet {
 			InputFile inputFile = new InputFile(javaFile.getPath());
 			inputFile.writeInput(request.getParameter("input"));
 			String message = javaFile.run();
+			request.setAttribute("compilestatus", true);
 			request.setAttribute("message", message);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
